@@ -1,0 +1,3 @@
+export const CHANGE_TOP_PLAYLIST = "CHANGE_TOP_PLAYLIST";
+export const CHANGE_CAT_LIST = "CHANGE_CAT_LIST";
+
