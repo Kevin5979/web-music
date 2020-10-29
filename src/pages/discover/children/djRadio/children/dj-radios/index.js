@@ -74,4 +74,4 @@ DjRadios.defaultProps = {
   currCate: 2001
 }
 
-export default memo(DjRadios)
+export default memo(DjRadios);

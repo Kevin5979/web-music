@@ -22,7 +22,7 @@ export const AlbumThemeItemWrapper = styled.div`
       .album-icon{
         display: none;
         position: absolute;
-        right: 23px;
+        right: 30px;
         bottom: 13px;
         width: ${props => props.styles.iconSize};
         height: ${props => props.styles.iconSize};
@@ -36,17 +36,21 @@ export const AlbumThemeItemWrapper = styled.div`
       }
     }
     .bottom{
-      a{
+      .fake-a{
         display: block;
         line-height: 18px;
         font-size: 12px;
         width: 100px;
       }
-      a.name{
+      i.name{
         color: #000;
       }
-      a.artist{
+      i.artist{
         width: 90%;
+        color: #666;
+      }
+      .timer{
+        font-size: 12px;
         color: #666;
       }
     }

@@ -1,17 +1,19 @@
-import React, {memo} from 'react';
+import React, {memo, useContext} from 'react';
 import propTypes from "prop-types";
 
-import {SongsThemeItemWrapper} from "./style"
-import {formatImgUrl, formatPlayCounter} from "utils/format-utils"
+import {SongsThemeItemWrapper} from "./style";
+import {formatImgUrl, formatPlayCounter} from "utils/format-utils";
+import {RecommendContext} from "pages/discover/children/recommend";
 
 function SongsThemeItem(props) {
-  const {item} = props
-  const toList = () => {
-    console.log("toList")
-  }
+  const {item} = props;
+
+  const history = useContext(RecommendContext);
+  const skip = id => history.push(`/discover/songs/detail?id=${id}`);
+
   return (
     <SongsThemeItemWrapper>
-      <div className="top" onClick={e => toList(item.id)}>
+      <div className="top" onClick={e => skip(item.id)}>
         <img className="img" src={formatImgUrl(item.picUrl, 140)} alt={item.name}/>
         <div className="cover sprite_cover" title={item.name}></div>
         <div className="detail sprite_cover flex-between">
@@ -23,7 +25,7 @@ function SongsThemeItem(props) {
         </div>
       </div>
       <div className="bottom  space-2">
-        <a href="/#" title={item.name}>{item.name}</a>
+        <i className="fake-a" onClick={e => skip(item.id)} title={item.name}>{item.name}</i>
       </div>
     </SongsThemeItemWrapper>
   )
@@ -38,4 +40,3 @@ SongsThemeItem.defaultProps = {
 }
 
 export default memo(SongsThemeItem);
-

@@ -5,7 +5,7 @@ import {RcmThemeNavWrapper} from "./style";
 import {NavLink} from "react-router-dom";
 
 function RcmThemeNav(props) {
-  const {title, list, link} = props
+  const {title, list, link} = props;
   return (
     <RcmThemeNavWrapper className="flex-between">
       <div className="left flex-start">

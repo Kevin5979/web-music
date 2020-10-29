@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import propTypes from "prop-types";
 
@@ -8,7 +8,7 @@ import {getHotArtistAction, getSomeArtistAction} from "../../store/actionCreator
 import {letters} from "common/local-data";
 
 function ArtistRight(props) {
-  const {currentTitle, currentItem} = props;
+  const {currentTitle, currentItem, skip} = props;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const dispatch = useDispatch();
@@ -22,10 +22,10 @@ function ArtistRight(props) {
     return currentItem.id === -1 ? state.getIn(["artist", "hotArtist"]) : state.getIn(["artist", "someArtist"])
   }, shallowEqual);
 
-  const changeIndex = useCallback((index, initial) => {
+  const changeIndex = (index, initial) => {
     setCurrentIndex(index);
     dispatch(getSomeArtistAction(currentItem.type, currentItem.area, initial))
-  }, [dispatch, currentItem.type, currentItem.area]);
+  };
 
   return (
     <ArtistRightWrapper>
@@ -49,15 +49,18 @@ function ArtistRight(props) {
         {
           artists.map(item => {
             return (
-              <li key={item.id} className="right-item">
+              <li key={item.id} className="right-item" onClick={e => skip(`/discover/artist/detail?id=${item.id}`)}>
                 <div className="top">
                   <img src={formatImgUrl(item.img1v1Url, 130)} alt={item.name + "的音乐"} title={item.name + "的音乐"}/>
-                  <a className="sprite_cover cover" href="/#" title={item.name + "的音乐"}> </a>
+                  <i
+                    className="sprite_cover cover fake-a"
+                    title={item.name + "的音乐"}
+                  ></i>
                 </div>
                 <div className="bottom flex-between">
-                  <a href="/#" title={item.name + "的音乐"} className="space-1">{item.name}</a>
+                  <span title={item.name + "的音乐"} className="space-1 fake-a">{item.name}</span>
                   {
-                    item.accountId ? <i className="sprite_icon2" title={item.name + "的个人主页"}></i> : null
+                    item.accountId ? <i className="sprite_icon2 fake-a" title={item.name + "的个人主页"}></i> : null
                   }
                 </div>
               </li>
@@ -71,7 +74,8 @@ function ArtistRight(props) {
 
 ArtistRight.propTypes = {
   currentTitle: propTypes.string,
-  currentItem: propTypes.object
+  currentItem: propTypes.object,
+  skip: propTypes.func
 }
 
 ArtistRight.defaultProps = {

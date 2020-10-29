@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useState} from 'react';
-import propTypes from "prop-types"
+import propTypes from "prop-types";
 
 import {DjHotClassWrapper} from "./style";
 import {formatImgUrl} from "utils/format-utils";
@@ -51,4 +51,4 @@ DjHotClass.defaultProps = {
   item: {}
 }
 
-export default memo(DjHotClass)
+export default memo(DjHotClass);

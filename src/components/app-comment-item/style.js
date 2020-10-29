@@ -9,10 +9,19 @@ export const AppCommentItemWrapper = styled.li`
   border-bottom: 1px solid #ccc;
   .comm-left{
     margin-right: 10px;
+    .avatar{
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
   }
   .comm-right{
-    flex: 1;
+     width: ${props => props.width};
     .comm-top{
+      align-items: flex-start;
+      .vip-rights{
+        transform: translateY(4px);
+      }
       p{
         color: #333;
       }
@@ -27,7 +36,7 @@ export const AppCommentItemWrapper = styled.li`
       }
     }
     .comm-bottom{
-      width: 100%;
+      width: ${props => props.width};
       padding: 15px 0;
       box-sizing: border-box;
       .time{

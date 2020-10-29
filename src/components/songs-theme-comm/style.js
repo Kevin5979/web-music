@@ -25,9 +25,10 @@ export const SongsThemeCommWrapper = styled.div`
       }
     }
     .right{
-      margin-left: 20px;
+      margin-left: 15px;
+      width: ${props => props.width};
       .text-input{
-        width: 580px;
+        width: ${props => props.width};
         height: 50px;
         padding: 5px 6px 6px;
         border: 1px solid #cdcdcd;

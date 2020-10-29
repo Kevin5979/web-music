@@ -80,8 +80,8 @@ export const HeaderWrapper = styled.div`
         height: 32px;
         border-radius: 16px;
           input::placeholder{
-          font-size: 12px;
-          color: #ccc;
+            font-size: 12px;
+            color: #999;
           }
       }
       .center{

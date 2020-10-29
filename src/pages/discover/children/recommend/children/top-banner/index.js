@@ -26,10 +26,10 @@ export default memo(function TopBanner() {
     dispatch(getTopBannerAction());
   }, [dispatch])
 
-  const bannerChange = useCallback((from, to) => {
+  const bannerChange = useCallback((form, to) => {
     setTimeout(() => {
       setCurrIndex(to);
-    }, 0);
+    }, [])
   }, [])
 
   const bgImage = topBanners.length > 0 && (topBanners[currIndex].imageUrl + "?imageView&blur=40x20")
@@ -39,7 +39,8 @@ export default memo(function TopBanner() {
       <div className="wrap-v2 banner flex-start">
         <i className="control-left" onClick={e => bannerRef.current.prev()}></i>
         <BannerLeft>
-          <Carousel effect="fade" dots={{className: "dots-active"}} autoplay ref={bannerRef} beforeChange={bannerChange}>
+          <Carousel effect="fade" dots={{className: "dots-active"}} autoplay ref={bannerRef}
+                    beforeChange={bannerChange}>
             {topBanners.map(item => {
               return (
                 <div className="banner-item" key={item.encodeId}>

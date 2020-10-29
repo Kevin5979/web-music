@@ -1,18 +1,16 @@
 import React, {memo} from 'react';
 import propTypes from "prop-types";
 
-import {SongsThemeItem2Wrapper} from "./style"
-import {formatImgUrl, formatPlayCounter} from "utils/format-utils"
+import {SongsThemeItem2Wrapper} from "./style";
+import {formatImgUrl, formatPlayCounter} from "utils/format-utils";
 
 
 function SongsThemeItem2(props) {
-  const {item} = props
-  const toList = () => {
-    console.log("toList")
-  }
+  const {item, skip} = props;
+
   return (
     <SongsThemeItem2Wrapper>
-      <div className="top" onClick={e => toList(item.id)}>
+      <div className="top" onClick={e => skip(item.id)}>
         <img className="img" src={formatImgUrl(item.coverImgUrl, 140)} alt={item.name}/>
         <div className="cover sprite_cover" title={item.name}></div>
         <div className="detail sprite_cover flex-between">
@@ -24,10 +22,10 @@ function SongsThemeItem2(props) {
         </div>
       </div>
       <div className="bottom  space-1">
-        <a href="/#" className="b-name" title={item.name}>{item.name}</a>
+        <i className="b-name fake-a" title={item.name}>{item.name}</i>
         <div className="space-1">
           <span className="by">by</span>
-          <a href="/#" className="b-nickname">{item.creator.nickname}</a>
+          <i className="b-nickname fake-a">{item.creator.nickname}</i>
         </div>
       </div>
     </SongsThemeItem2Wrapper>
@@ -35,7 +33,8 @@ function SongsThemeItem2(props) {
 }
 
 SongsThemeItem2.propTypes = {
-  item: propTypes.object
+  item: propTypes.object,
+  skip: propTypes.func
 }
 
 SongsThemeItem2.defaultProps = {

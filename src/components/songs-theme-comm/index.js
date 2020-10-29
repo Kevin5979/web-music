@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 import {SongsThemeCommWrapper} from "./style"
 
 function SongsThemeComm(props) {
-  const {commCount} = props
+  const {commCount,width} = props;
+
   return (
-    <SongsThemeCommWrapper>
+    <SongsThemeCommWrapper width={width}>
       <div className="comm-top flex-start">
         <h4>评论</h4>
         <p className="count">共{commCount}条评论</p>
@@ -34,11 +35,13 @@ function SongsThemeComm(props) {
 }
 
 SongsThemeComm.propTypes = {
-  commCount: PropTypes.number
+  commCount: PropTypes.number,
+  width: PropTypes.string
 }
 
 SongsThemeComm.defaultProps = {
-  commCount: 0
+  commCount: 0,
+  width: "560px"
 }
 
-export default memo(SongsThemeComm)
+export default memo(SongsThemeComm);

@@ -28,5 +28,3 @@ export const getSomeArtistAction = (type, area, initial, offset, limit) => {
     })
   }
 }
-
-

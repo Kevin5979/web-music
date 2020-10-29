@@ -48,7 +48,7 @@ export const RcmSettledArtistWrapper = styled.div`
       box-sizing: border-box;
       text-decoration: none;
       :hover{
-        box-shadow: 1px 1px 1px 1px rgba(0,0,0,.5);
+        box-shadow: 0 1px 0 0 rgba(0,0,0,.5);
       }
       i{
         display: block;

@@ -8,7 +8,7 @@ import {getNewAlbumsAction} from "../recommend/store/actionCreators";
 import {getAllAlbumAction} from "./store/actionCreators";
 import {allAlbumClass} from "common/local-data";
 
-export default memo(function Album() {
+export default memo(function Album(props) {
   const [currIndex, setCurrIndex] = useState(1);
   const [currType, setCurrType] = useState("ALL");
   const dispatch = useDispatch();
@@ -28,11 +28,11 @@ export default memo(function Album() {
     dispatch(getAllAlbumAction(currType, (index - 1) * 35));
   }, [dispatch, currType])
 
-  const changeType = useCallback((type) => {
+  const changeType = type => {
     setCurrType(type);
     setCurrIndex(1);
     dispatch(getAllAlbumAction(type));
-  }, [dispatch])
+  }
 
   const styles = {
     imgSize: 130,
@@ -42,6 +42,8 @@ export default memo(function Album() {
     iconP: "0 -170px",
     iconP2: "0 -170px"
   }
+
+  const skip = useCallback(link => props.history.push(link), [props.history]);
 
   return (
     <AlbumWrapper className="wrap-v2">
@@ -53,7 +55,7 @@ export default memo(function Album() {
           newAlbums.length > 0 && newAlbums.slice(0, 10).map(item => {
             return (
               <li key={item.id} className="album-item">
-                <AlbumThemeItem item={item} styles={styles}/>
+                <AlbumThemeItem item={item} styles={styles} skip={skip}/>
               </li>
             )
           })
@@ -79,7 +81,7 @@ export default memo(function Album() {
           allAlbum.length > 0 && allAlbum.map(item => {
             return (
               <li key={item.id} className="album-item">
-                <AlbumThemeItem item={item} styles={styles}/>
+                <AlbumThemeItem item={item} styles={styles} skip={skip}/>
               </li>
             )
           })

@@ -5,6 +5,11 @@ export const DiscoverWrapper = styled.div`
   .top{
     background-color: #C20C0C;
   }
+  
+  .ant-back-top{
+    bottom: 200px !important;
+  }
+  
 `;
 
 export const TopMenu = styled.div`

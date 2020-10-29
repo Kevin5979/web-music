@@ -1,17 +1,19 @@
-import React, {memo} from 'react';
+import React, {memo, useCallback} from 'react';
 
 import LeftRanking from "./children/left-ranking";
 import RightRanking from "./children/right-ranking";
-
 import {RankingWrapper} from "./style";
+import {getId} from "utils/format-utils";
 
 export default memo(function Ranking(props) {
-  const currentId = props.location.search.replace("?id=", "") || "19723756";
-  const selectRanking = (id) => {
+  const currentId = getId(props) || "19723756";
+  const {history} = props;
+
+  const selectRanking = useCallback((id) => {
     if (currentId !== String(id)) {
-      window.location.replace(`/discover/ranking?id=${id}`);
+      history.push(`/discover/ranking?id=${id}`)
     }
-  }
+  }, [history, currentId])
 
   return (
     <RankingWrapper className="wrap-v2">

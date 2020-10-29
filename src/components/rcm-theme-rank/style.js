@@ -86,7 +86,7 @@ export const RcmThemeRankWrapper = styled.div`
          box-sizing: border-box;
          display: flex;
          justify-content: space-between;
-         a{
+         i.fake-a{
            flex: 1;
            display: inline-block;
            width: 170px;
@@ -95,7 +95,7 @@ export const RcmThemeRankWrapper = styled.div`
            line-height: 32px;
          }
          :hover{
-           a{
+           i.fake-a{
              width: 106px;
              height: 32px;
              line-height: 32px;
@@ -144,7 +144,7 @@ export const RcmThemeRankWrapper = styled.div`
       text-align: right;
       padding-right: 15px;
       box-sizing: border-box;
-      a{
+      .fake-a{
         color: #000;
         line-height: 32px;
       }

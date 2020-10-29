@@ -12,7 +12,8 @@ import {
   RankingMainWrapper
 } from "./style";
 import {getRankingDetailAction, getRankingCommentAction} from "../../store/actionCreators";
-import {formatImgUrl, formatMonthDay, formatMinuteSecond, getArtistsName} from "utils/format-utils";
+import {formatImgUrl, formatMonthDay} from "utils/format-utils";
+import SongsThemeList from "components/songs-theme-list";
 
 
 export default memo(function RightRanking(props) {
@@ -42,7 +43,7 @@ export default memo(function RightRanking(props) {
     tracks
   } = rankingDetail;
 
-  const {comments = [], total, more} = rankingComment
+  const {comments = [], total} = rankingComment
 
   const changeCommentPage = useCallback((index) => {
     setCurrCommentIndex(index);
@@ -74,80 +75,26 @@ export default memo(function RightRanking(props) {
       </RankingTopWrapper>
       <RankingMainWrapper>
         <SongsTableHead songCount={trackCount} playCount={playCount}/>
-        <div className="song-list">
-          <div className="sec-head">
-            <div className="sprite_table"></div>
-            <div className="sprite_table">标题</div>
-            <div className="sprite_table">时长</div>
-            <div className="sprite_table">歌手</div>
-          </div>
-          <ul className="list">
-            {
-              tracks && tracks.length > 0 && tracks.map((item, index) => {
-                return (
-                  <li key={item.id} className="item">
-                    <div className="order">{index + 1}</div>
-                    <div className="al-name flex-start space-1">
-                      <i className="sprite_table play"></i>
-                      <a href="/#" className="space-1">{item.al.name}</a>
-                      {
-                        item.alia.length > 0 ?
-                          <span className="alia space-1" title={item.alia[0]}>{" - " + item.alia[0]}</span> : null
-                      }
-                      {
-                        item.mv > 0 ? <i className="sprite_table mv" title="播放mv"></i> : null
-                      }
-                    </div>
-                    <div className="dt">
-                      <p>{formatMinuteSecond(item.dt)}</p>
-                      <div className="icons">
-                        <i className="sprite_icon2" title="添加到播放列表"></i>
-                        <i className="sprite_table" title="收藏"></i>
-                        <i className="sprite_table" title="分享"></i>
-                        <i className="sprite_table" title="下载"></i>
-                      </div>
-                    </div>
-                    <div className="songs space-1" title={getArtistsName(item.ar)}>
-                      {
-                        item.ar && item.ar.length > 0 && item.ar.map((value, indey) => {
-                          if (indey === item.ar.length - 1) {
-                            return <a href="/#" key={value.id}>{value.name}</a>
-                          } else {
-                            return (
-                              <a href="/#" key={value.id}>
-                                {value.name}
-                                <i>/</i>
-                              </a>
-                            )
-                          }
-                        })
-                      }
-                    </div>
-                  </li>
-                )
-              })
-            }
-          </ul>
-        </div>
+        <SongsThemeList tracks={tracks}/>
         <div className="song-comm">
           <SongsThemeComm commCount={commentCount}/>
           <div className="new-comm">最新评论({total})</div>
           <ul className="comment">
             {
-              comments.length > 0 && more && comments.map(item => <AppCommentItem key={item.commentId} comment={item}/>)
+              comments.length > 0 && comments.map(item => <AppCommentItem key={item.commentId} comment={item}/>)
             }
           </ul>
         </div>
       </RankingMainWrapper>
       <div className="pages">
-        <AppPagination
-          total={total}
-          defaultPageSize={20}
-          defaultCurrent={1}
-          pageSizeOptions={[20]}
-          current={currCommentIndex}
-          onPageChange={changeCommentPage}
-        />
+          <AppPagination
+            total={total}
+            defaultPageSize={20}
+            defaultCurrent={1}
+            pageSizeOptions={[20]}
+            current={currCommentIndex}
+            onPageChange={changeCommentPage}
+          />
       </div>
     </RightRankingWrapper>
   )

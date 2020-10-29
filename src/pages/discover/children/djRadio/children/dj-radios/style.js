@@ -19,6 +19,7 @@ export const DjRadiosWrapper = styled.div`
       img{
         width: 120px;
         height: 120px;
+        display: inline-block;
         cursor: pointer;
       }
       .detail{

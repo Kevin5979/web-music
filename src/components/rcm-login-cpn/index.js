@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import {RcmLoginCpnWrapper} from "./style"
+import {RcmLoginCpnWrapper} from "./style";
 
 export default memo(function RcmLoginCpn() {
   return (

@@ -54,6 +54,8 @@ export const ArtistRightWrapper = styled.div`
       .bottom{
         margin-top: 5px;
         padding: 0 8px;
+        width: 130px;
+        box-sizing: border-box;
         a{
           color: #000;
         }

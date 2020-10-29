@@ -17,7 +17,7 @@ export default memo(function LeftRanking(props) {
     allRanking: state.getIn(["ranking", "allRanking"])
   }), shallowEqual)
 
-  function itemClick(id) {
+  const itemClick = id => {
     selectRanking(id)
   }
 

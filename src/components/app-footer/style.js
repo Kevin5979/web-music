@@ -5,7 +5,7 @@ export const FooterWrapper = styled.div`
   color: #666;
   border-top: 1px solid #d3d3d3;
   box-sizing: border-box;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   .left{
     margin-top: 15px;
     .links{

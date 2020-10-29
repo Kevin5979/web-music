@@ -137,31 +137,31 @@ export const topRankDetail = [
 
 export const SettledArtist = [
   {
-    id: "29879272",
+    id: "10559",
     name: "张惠妹aMEI",
     desc: "台湾歌手张惠妹",
     img: "http://p2.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62"
   },
   {
-    id: "100167517",
+    id: "1160085",
     name: "Fine乐团",
     desc: "独立音乐人",
     img: "http://p2.music.126.net/1EN_iqQWU_E3DafzEOh3cA==/3302932937408956.jpg?param=62y62"
   },
   {
-    id: "58426904",
+    id: "5345",
     name: "萬曉利",
     desc: "民谣歌手、中国现代民谣的代表人物之一",
     img: "http://p2.music.126.net/ZuktZvjcxpYBjcWC3gmbPg==/19027048718765608.jpg?param=62y62"
   },
   {
-    id: "93504818",
+    id: "6731",
     name: "音乐人赵雷",
     desc: "民谣歌手",
     img: "http://p2.music.126.net/v_zYgE9kmAwVGWV2c8hFxA==/7943971513291094.jpg?param=62y62"
   },
   {
-    id: "46998208",
+    id: "3669",
     name: "王三溥",
     desc: "音乐人",
     img: "http://p2.music.126.net/6wPGl_ddgAbJTx5kOohcyw==/109951163892302996.jpg?param=62y62"
@@ -467,6 +467,3 @@ export const djHotClass = [
     type: 11
   }
 ];
-
-
-

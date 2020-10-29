@@ -9,7 +9,7 @@ export const SongsTableHeadWrapper = styled.div`
     font-size: 20px;
     line-height: 28px;
   }
-  div{
+  .flex-between{
     flex: 1;
     margin-left: 15px;
     color: #666;
@@ -17,6 +17,22 @@ export const SongsTableHeadWrapper = styled.div`
     i{
      color: #c20c0c;
      font-weight: bold;
+    }
+    
+    .to-link{
+      .icon{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-position: -34px -863px;
+        transform: translateY(4px);
+      }
+      a{
+        color: #4996d1;
+        text-decoration: underline;
+        margin-right: 15px;
+        line-height: 16px;
+      }
     }
   }
   

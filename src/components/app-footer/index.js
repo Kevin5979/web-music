@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 
-import {FooterWrapper} from "./style"
-import {footerLinks, footerIcons} from "common/local-data"
+import {FooterWrapper} from "./style";
+import {footerLinks, footerIcons} from "common/local-data";
 
 export default memo(function AppFooter() {
   return (

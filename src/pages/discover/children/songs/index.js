@@ -13,7 +13,7 @@ import {ModalWrapper, SongsMainWrapper, SongsWrapper} from "./style";
 import {getSongsClassify} from "utils/format-utils";
 import {categories, iconPositions} from "common/local-data";
 
-export default memo(function Songs() {
+export default memo(function Songs(props) {
   // State hooks
   const [currType, setCurrType] = useState("hot");
   const [visible, setVisible] = useState(false);
@@ -38,14 +38,14 @@ export default memo(function Songs() {
   const {sub = []} = catList;
 
   // 展示弹窗
-  const showModal = useCallback(() => {
+  const showModal = () => {
     setVisible(!visible);
-  }, [visible])
+  }
 
   const songsClassify = getSongsClassify(sub);
 
   // 切换歌单类型
-  const selectItem = useCallback((value) => {
+  const selectItem = (value) => {
     if (value === "全部") {
       setCurrCat("选择分类");
     } else {
@@ -54,7 +54,7 @@ export default memo(function Songs() {
     setCurrIndex(1);
     dispatch(getTopPlayListAction(currType, value));
     setVisible(false);
-  }, [dispatch, currType]);
+  };
 
   // 切换页数
   const changeSongsPage = useCallback((index) => {
@@ -68,6 +68,14 @@ export default memo(function Songs() {
     setCurrIndex(1);
     dispatch(getTopPlayListAction(typeName));
   }, [dispatch])
+
+  const skip = useCallback((id) => {
+    props.history.push(`/discover/songs/detail?id=${id}`)
+  },[props.history])
+
+  const handlerCancel = useCallback(()=>{
+    setVisible(false)
+  },[])
 
   return (
     <SongsWrapper className="wrap-v2">
@@ -91,6 +99,7 @@ export default memo(function Songs() {
           visible={visible}
           width={1000}
           footer={null}
+          onCancel={handlerCancel}
         >
           <ModalWrapper iconPositions={iconPositions}>
             <h3 className={(currCat === "选择分类" || currCat === "全部") ? "active" : ""} onClick={e => selectItem("全部")}>
@@ -129,7 +138,7 @@ export default memo(function Songs() {
           playlists.length > 0 && playlists.map(item => {
             return (
               <li key={item.id} className="item">
-                <SongsThemeItem2 item={item}/>
+                <SongsThemeItem2 item={item} skip={skip}/>
               </li>
             )
           })

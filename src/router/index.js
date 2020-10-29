@@ -1,17 +1,19 @@
-import React from "react";
+import React, {lazy} from "react";
 import {Redirect} from "react-router-dom";
 
-import Discover from "pages/discover";
-import Friend from "pages/friend";
-import Mine from "pages/mine";
-
-import Recommend from "pages/discover/children/recommend";
-import Ranking from "pages/discover/children/ranking";
-import Songs from "pages/discover/children/songs";
-import DjRadio from "pages/discover/children/djRadio";
-import Artist from "pages/discover/children/artist";
-import Album from "pages/discover/children/album";
-
+const Discover = lazy(() => import("pages/discover"));
+const Friend = lazy(() => import("pages/friend"));
+const Mine = lazy(() => import("pages/mine"));
+const PlayerPanel = lazy(() => import("pages/player/player-panel"));
+const Recommend = lazy(() => import("pages/discover/children/recommend"));
+const Ranking = lazy(() => import("pages/discover/children/ranking"));
+const Songs = lazy(() => import("pages/discover/children/songs"));
+const DjRadio = lazy(() => import("pages/discover/children/djRadio"));
+const Artist = lazy(() => import("pages/discover/children/artist"));
+const Album = lazy(() => import("pages/discover/children/album"));
+const SongsDetail = lazy(() => import("pages/discover/children/songs-detail"));
+const ArtistDetail = lazy(() => import("pages/discover/children/artist-detail"));
+const AlbumDetail = lazy(() => import("pages/discover/children/album-detail"));
 
 const routes = [
   {
@@ -19,7 +21,6 @@ const routes = [
     exact: true,
     render: () => (
       <Redirect to="/discover"/>
-      // <Redirect to="/mine"/>
     )
   },
   {
@@ -30,8 +31,7 @@ const routes = [
         path: "/discover",
         exact: true,
         render: () => (
-          // <Redirect to="/discover/recommend"/>
-          <Redirect to="/discover/album"/>
+          <Redirect to="/discover/recommend"/>
         )
       },
       {
@@ -44,7 +44,8 @@ const routes = [
       },
       {
         path: "/discover/songs",
-        component: Songs
+        component: Songs,
+        exact: true
       },
       {
         path: "/discover/djRadio",
@@ -52,11 +53,29 @@ const routes = [
       },
       {
         path: "/discover/artist",
-        component: Artist
+        component: Artist,
+        exact: true
       },
       {
         path: "/discover/album",
-        component: Album
+        component: Album,
+        exact: true
+      },
+      {
+        path: "/discover/songs/detail",
+        component: SongsDetail
+      },
+      {
+        path: "/discover/artist/detail",
+        component: ArtistDetail
+      },
+      {
+        path: "/discover/album/detail",
+        component: AlbumDetail
+      },
+      {
+        path: "/discover/player",
+        component: PlayerPanel
       }
     ]
   },

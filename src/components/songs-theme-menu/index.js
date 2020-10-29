@@ -1,14 +1,16 @@
 import React, {memo} from 'react';
 import {SongsThemeMenuWrapper} from "./style";
 import PropTypes from "prop-types";
+import {formatPlayCounter} from "utils/format-utils";
 
 function SongsThemeMenu(props) {
-  const {subscribedCount, shareCount, commentCount} = props;
+  const {subscribedCount, shareCount, commentCount, playerAction} = props;
+
   return (
     <SongsThemeMenuWrapper>
       <ul className="operate flex-start">
         <li className="player flex-start">
-          <div className="p-left sprite_button flex-start" title="播放">
+          <div className="p-left sprite_button flex-start" title="播放" onClick={playerAction}>
             <i className="sprite_button"></i>
             <span>播放</span>
           </div>
@@ -18,11 +20,11 @@ function SongsThemeMenu(props) {
         </li>
         <li className="item flex-start">
           <i className="sprite_button"></i>
-          <span>{"(" + subscribedCount + ")"}</span>
+          <span>{subscribedCount > 0 ? "(" + subscribedCount + ")" : "收藏"}</span>
         </li>
         <li className="share item flex-start">
           <i className="sprite_button"></i>
-          <span>{"(" + shareCount + ")"}</span>
+          <span>{shareCount > 0 ? "(" + shareCount + ")" : "分享"}</span>
         </li>
         <li className="download item flex-start">
           <i className="sprite_button"></i>
@@ -30,7 +32,7 @@ function SongsThemeMenu(props) {
         </li>
         <li className="comment item flex-start">
           <i className="sprite_button"></i>
-          <span>{"(" + commentCount + ")"}</span>
+          <span>{"(" + formatPlayCounter(commentCount) + ")"}</span>
         </li>
       </ul>
     </SongsThemeMenuWrapper>
@@ -40,7 +42,8 @@ function SongsThemeMenu(props) {
 SongsThemeMenu.propTypes = {
   subscribedCount: PropTypes.number,
   shareCount: PropTypes.number,
-  commentCount: PropTypes.number
+  commentCount: PropTypes.number,
+  playerAction: PropTypes.func
 };
 
 SongsThemeMenu.defaultProps = {

@@ -1,10 +1,10 @@
 import React, {memo} from 'react';
 import propTypes from "prop-types";
 import {AppRepliedItemWrapper} from "./style";
-import {formatImgUrl} from "utils/format-utils"
+import {formatImgUrl} from "utils/format-utils";
 
 function AppRepliedItem(props) {
-  const {replied} = props
+  const {replied} = props;
   return (
     <AppRepliedItemWrapper>
       <div className="rep-left">
@@ -36,4 +36,4 @@ AppRepliedItem.defaultProps = {
   replied: {}
 }
 
-export default memo(AppRepliedItem)
+export default memo(AppRepliedItem);

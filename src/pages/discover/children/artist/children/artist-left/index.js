@@ -1,4 +1,4 @@
-import React, {memo, useCallback} from 'react';
+import React, {memo} from 'react';
 import propTypes from "prop-types";
 
 import {artistClass} from "common/local-data";
@@ -7,9 +7,7 @@ import {ArtistLeftWrapper} from "./style";
 function ArtistLeft(props) {
   const {currentIndex, changeArtistType} = props;
 
-  const changeIndex = useCallback((title, value) => {
-    changeArtistType(title, value)
-  }, [changeArtistType]);
+  const changeIndex = (title, value) => changeArtistType(title, value);
 
   return (
     <ArtistLeftWrapper>

@@ -6,9 +6,7 @@ import {HotAnchor} from "common/local-data";
 export default memo(function RcmHotAnchor() {
   return (
     <RcmHotAnchorWrapper>
-      <div className="header">
-        热门主播
-      </div>
+      <div className="header">热门主播</div>
       <ul className="rcm-anchor">
         {
           HotAnchor.map(item=>{

@@ -1,4 +1,4 @@
-import React, {memo, useCallback} from 'react';
+import React, {memo} from 'react';
 import {AppPaginationWrapper} from "./style";
 import {Pagination} from "antd";
 
@@ -14,9 +14,7 @@ function AppPagination(props) {
     onPageChange
   } = props;
 
-  const changePage = useCallback((index) => {
-    onPageChange(index);
-  }, [onPageChange]);
+  const changePage = index => onPageChange(index);
 
   return (
     <AppPaginationWrapper>
